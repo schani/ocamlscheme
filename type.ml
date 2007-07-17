@@ -27,6 +27,7 @@ type lisp_code =
   | If of lisp_code * lisp_code * lisp_code
   | Application of lisp_code * (lisp_code array)
   | Build_closure of lisp_code
+  | Amb of lisp_code list
   | Global_set of symbol * lisp_code
   | Global_set_macro of symbol * lisp_code
 and lisp_expr =
