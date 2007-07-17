@@ -34,5 +34,12 @@ parser.ml parser.mli : parser.mly
 lexer.ml : lexer.mll
 	ocamllex lexer.mll
 
+dist :
+	rm -rf ocamlscheme
+	mkdir ocamlscheme
+	cp COPYING README Makefile lexer.mll parser.mly *.ml test.scm ocamlscheme/
+	tar -zcvf ocamlscheme.tar.gz ocamlscheme
+	rm -rf ocamlscheme
+
 clean :
 	rm -f *~ core *.cmi *.cmo *.cmx *.o *.mli lexer.ml parser.ml parser.mli lisp
