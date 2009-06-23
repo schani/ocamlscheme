@@ -3,7 +3,7 @@
  *
  * ocamlscheme
  *
- * Copyright (C) 2001-2004 Mark Probst
+ * Copyright (C) 2001-2007 Mark Probst
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -32,5 +32,6 @@ rule token = parse
   | ')'                       { RPAREN }
   | '.'                       { DOT }
   | '\''                      { QUOTE }
+  | ';'[^'\n']*		      { token lexbuf }
   | [^'(' ')' '0' - '9' ' ' '\t' '\n' '.' '\''][^' ' '\t' '\n' '(' ')']*    { SYMBOL(Lexing.lexeme lexbuf) }
   | eof                       { raise Eof }
